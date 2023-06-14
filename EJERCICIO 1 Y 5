@@ -1,0 +1,95 @@
+
+1. TESOEM POWER BI
+
+Mi ejemplo se basa en ayuda a los maestros ya que les beneficie en crear infromes por cada alumno que tienen o en las materias y salones que estan impartiendo 
+dependiendo el numero de alumnos que tengas no es importanta. Dado que muchos maestro utilizan Excel como base de datos pero con Power Bi se pueden seleccionar
+cada estudiante / fila para asi poder generar un un buen informe visual sobre el programa de las califiacciones de las 9 carreras existentes asi mismo ayuda 
+ver las asistencias de una manera mas didactica para ver si faltaron mucho o poco y tener las informacion de una manera clara precisa y dinamica y agradable para
+el usuario y poder llevar un orde y puntuación.
+
+Con esto puede cada infrome a continuación, ser facilmente compartido a traves de correos electronicos a los equipos de los directivos o personas encargada a quien 
+se le tenga que comparitr así para que esta persona pueda checar y entender los datos plasmados como dirección o encargados de carrera.
+
+Por ultimo existe la opción para que los alumnos dejen comentarios escritos en su reporte personal generado por power Bi realizando un bucle de comentarios
+donde todos puedan observar sus opiniones 
+
+
+
+5. INVESTIGACIÓN
+
+                                         METODOS DE RESPALDO 
+ 
+En Oracle, existen varios métodos de respaldo (backup) de una base de datos que se pueden utilizar para 
+proteger la información y garantizar la disponibilidad de los datos en caso de fallos o desastres. 
+
+1-Backup físico: Este método implica hacer una copia exacta de los archivos de la base de datos en un medio de almacenamiento externo,
+como cintas o discos. El backup físico se puede realizar a nivel de tablaspace, datafile o base de datos completa utilizando utilidades
+como RMAN (Recovery Manager) o herramientas de terceros.
+
+2-Backup lógico: En este enfoque, se extraen los datos y objetos lógicos de la base de datos en un formato legible, como sentencias SQL o 
+archivos de exportación (export). Luego, estos archivos se pueden utilizar para restaurar y recuperar la base de datos. La utilidad de Oracle Data Pump
+proporciona capacidades de exportación e importación para respaldos lógicos.
+
+3-Backup incremental: En lugar de realizar copias completas de la base de datos cada vez, el backup incremental solo respalda los cambios que se han producido desde el último backup.
+Esto permite reducir el tiempo de respaldo y el espacio requerido para almacenar los backups. Oracle RMAN proporciona funcionalidades para realizar backups incrementales.
+
+4-Backup en caliente: Este tipo de backup se realiza mientras la base de datos está en ejecución, lo que minimiza el tiempo de inactividad. 
+Oracle permite realizar backups en caliente utilizando tecnologías como Flashback Database o realizando backups de tablespaces individuales 
+mientras la base de datos está en modo de ARCHIVELOG.
+
+5-Backup en frío: En contraste con el backup en caliente, este método se lleva a cabo cuando la base de datos está completamente detenida.
+Consiste en copiar los archivos de la base de datos mientras esta no está en uso.
+
+
+
+                                         METODOS DE RECUPERACIÓN
+                                         
+En Oracle Database, existen varios métodos de recuperación de una base de datos en caso de fallos o corrupción de datos.
+
+1-Rollback: Oracle utiliza el mecanismo de rollback para deshacer las transacciones no confirmadas en caso de fallo. 
+Durante la recuperación, se deshacen las transacciones no confirmadas y se restaura la base de datos al estado antes del fallo.
+
+2-Redo log: Los redo logs son registros de todas las modificaciones realizadas en la base de datos. 
+Estos logs se utilizan para recuperar la base de datos hasta un punto de recuperación específico o 
+hasta el momento justo antes de un fallo. Oracle aplica los cambios registrados en los redo logs para restaurar la base de datos a un estado consistente.
+
+3-Control file: El control file es un archivo binario que contiene información crucial sobre la base de datos, 
+como la estructura de los archivos de datos, los nombres de los archivos de redo log y los puntos de recuperación. 
+En caso de fallo, el control file se utiliza para determinar qué archivos de datos y redo logs deben recuperarse.
+
+4-Puntos de recuperación (SCN): Oracle utiliza los puntos de recuperación, conocidos como SCN (System Change Number),
+para marcar momentos específicos en el tiempo hasta donde se desea recuperar la base de datos. 
+La recuperación se lleva a cabo hasta el SCN deseado para restaurar la base de datos a un estado consistente.
+
+5-RMAN (Recovery Manager): RMAN es una herramienta de Oracle para realizar copias de seguridad y recuperación de bases de datos.
+Permite realizar copias de seguridad incrementales y completas, así como recuperar la base de datos hasta un punto específico
+en el tiempo utilizando los redo logs y archivos de respaldo.
+
+6-Flashback Technology: Oracle proporciona una serie de características llamadas Flashback Technology 
+que permiten revertir la base de datos a un estado anterior o realizar consultas a datos en un punto anterior en el tiempo.
+Estas características incluyen Flashback Database, Flashback Table, Flashback Query, entre otras.                                         
+                                         
+                                         
+                                         MIGRACIÓN DE UNA BASE DE DATOS
+                                         
+                                         
+En Oracle, hay varias formas de migrar una base de datos de un Sistema Gestor de Bases de Datos (SGBD) a otro. 
+
+1-Exportar e importar (Oracle Data Pump): Oracle proporciona utilidades de exportación e importación llamadas 
+Oracle Data Pump (expdp y impdp). Puedes utilizar estas utilidades para exportar la base de datos desde el SGBD de origen
+y luego importarla en el SGBD de destino. Esto permite transferir los datos, objetos y esquemas de una base de datos a otra.
+
+2-Oracle GoldenGate: Oracle GoldenGate es una solución de replicación y migración de datos en tiempo real.
+Permite replicar datos de forma continua desde una base de datos de origen a una base de datos de destino, 
+manteniendo ambos sistemas sincronizados durante la migración. GoldenGate se utiliza comúnmente para migraciones sin tiempo de inactividad (zero-downtime).
+
+3-Oracle Data Guard: Oracle Data Guard es una solución de alta disponibilidad y recuperación ante desastres 
+que también se puede utilizar para migrar una base de datos. Puedes configurar un entorno de Data Guard con una base de datos de destino
+y luego realizar una conmutación por error para hacer que la base de datos de destino se convierta en la base de datos principal después de la migración.
+
+4-RMAN (Recovery Manager): Oracle Recovery Manager (RMAN) es una herramienta de respaldo y recuperación en Oracle. 
+Puedes utilizar RMAN para realizar una copia de seguridad de la base de datos en el SGBD de origen y luego restaurarla en el SGBD de destino. 
+Esto puede ser útil para migraciones en las que también se requiere una copia de seguridad de la base de datos.                                         
+
+
+
