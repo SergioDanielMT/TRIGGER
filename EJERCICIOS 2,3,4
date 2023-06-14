@@ -1,0 +1,83 @@
+NOTA: ANTES DE HACER LAS INSERCIONES O BORRADO OACTUALIZDO FAVORDE EJECUTAR PRIMERO LOS 3 TRIGGERS 
+
+create table tb_a (
+id number(12),
+nombre_p varchar(50),
+tipo varchar(35),
+costo number(10));
+
+create table tb_b(
+descripción varchar(100));
+
+drop table tb_a;
+drop table tb_b;
+
+insert into tb_a values(001,'donitas','pan',20);
+insert into tb_a values(002,'rebanada','pan',10);
+insert into tb_a values(003,'mantecadas','pan',25);
+insert into tb_a values(004,'nito','pan',15);
+insert into tb_a values(005,'buñuelos','pan',20);
+insert into tb_a values(021,'doritos','botana',15);
+insert into tb_a values(022,'paketaxo','botana',56);
+insert into tb_a values(023,'Sabritas adobadas','botana',35);
+insert into tb_a values(024,'crujitos','botana',15);
+insert into tb_a values(025,'sabritones','botana',50);
+insert into tb_a values(051,'pulparindo','dulce',8);
+insert into tb_a values(052,'picafresa','dulce',2);
+insert into tb_a values(053,'mazapan','dulce',8);
+insert into tb_a values(054,'panditas','dulce',18);
+insert into tb_a values(055,'dragoncito','dulce',3);
+
+ select * from tb_a;
+ select * from tb_b;
+
+--------------------------------------------------------- EJERCICIO 1 ----------------------------------------------------------
+CREATE OR REPLACE TRIGGER regi
+AFTER INSERT OR UPDATE OR DELETE
+ON tb_a
+FOR EACH ROW
+BEGIN
+    IF INSERTING THEN
+        INSERT INTO tb_b VALUES ('Se ha insertado un nuevo dato en tb_a');
+    ELSIF UPDATING THEN
+        INSERT INTO tb_b VALUES ('Se ha actualizado un dato en tb_a');
+    ELSIF DELETING THEN
+        INSERT INTO tb_b VALUES ('Se ha borrado un dato en tb_a');
+    END IF;
+END;
+
+delete from tb_a where costo =10;
+update tb_a set costo = 10 where tipo='pan';
+
+ select * from tb_a;
+     select * from tb_b;
+
+--------------------------------------------------------- EJERCICIO 2 ----------------------------------------------------------
+CREATE OR REPLACE TRIGGER letra_d
+AFTER INSERT
+ON tb_a
+FOR EACH ROW
+DECLARE
+    inicial varchar(1);
+BEGIN
+    
+    inicial := UPPER(SUBSTR(:NEW.nombre_p, 1, 1));
+
+    IF inicial = 'D' THEN
+        
+        INSERT INTO tb_b
+        VALUES ('Se agregó un producto con letra D confecha ' || TO_CHAR(SYSTIMESTAMP, 'DD-MON-YYYY HH24:MI:SS'));
+    END IF;
+END;
+
+
+--------------------------------------------------------- EJERCICIO 3 ----------------------------------------------------------
+CREATE OR REPLACE TRIGGER eliminar12
+AFTER DELETE
+ON tb_a
+FOR EACH ROW
+BEGIN
+    IF :OLD.costo <= 12 THEN
+        INSERT INTO tb_b  VALUES ( 'SE ELIMINO UN PRODUCTO HUMILDE MENOR A MI PASAJE');
+    END IF;
+END;
